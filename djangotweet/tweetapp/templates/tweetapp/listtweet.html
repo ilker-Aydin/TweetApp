@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{%block content%}
+
+    <div class="container" style="width: 50%;">
+        {%for tweet in tweets%}
+            <div class="card" style="padding: 10px;">
+                <div class="card-header" style="background-color:cornflowerblue  ;">
+                   <h4> {{tweet.username}} </h4>
+                </div>
+                <div class="card-body">
+                    <p class="card-text">{{tweet.message}}</p>
+                </div>
+                {%if tweet.username == user%}<!--kullanıcının kendi tweetini silebilmesi için bu == user yaptgmz için her kullanıcının kendi paylastıgı tweetde ddelete butonu gozukcek-->
+                <a href="{%url 'tweetapp:DeleteTweet' id=tweet.id%}" class="btn btn-danger">Delete</a>
+                <!--bunu backend dede kontrol etmemiz lazım vies.py de yeni fonksiyon yazdım git bak id de verdgmz için id yide gordgn gibi alablrsn-->
+                
+
+                {%endif%}
+            </div>
+        {%endfor%}
+    </div>
+
+    
+        
+{%endblock%}
+

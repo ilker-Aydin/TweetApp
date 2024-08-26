@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{%block content%}
+
+{% if form.errors%}
+<p>Your username and password didn't match. Please try again</p>
+{%endif%}
+
+{%if user.is_authenticated%}<!--eger bu gecerliyse kullanıcı giriş yapmış demektri hoşgeldin demiş olalım-->
+    <h2 style="padding: 10px;">Welcome {{user.username}}</h2>
+{%else%}<!--kullanıcı giriş yapmadıysada bu formu gosterelim-->
+
+<form method="POST" action="{%url 'login'%}">
+    <div class="container" style="border: 4px solid cornflowerblue;padding: 8px;width: 50%;" >
+        {%csrf_token%}
+    {%for field in form%} <!--herhangi bi yerde bi form vermedik bize hazır olusturulmus bi form var sadece ana url ye ekledik ve settingste en aşşasına eklememiz gereken şeyler var git bak -->
+    
+        <div class="form-control">
+            {{field.label_tag}}
+            {{field}}
+          </div>
+        {%endfor%}
+    <button type="submit" class="btn btn-primary">Login</button>
+</div>    
+</form>
+
+{%endif%}
+{%endblock%}

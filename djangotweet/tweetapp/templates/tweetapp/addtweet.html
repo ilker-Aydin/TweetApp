@@ -1,0 +1,26 @@
+{%extends 'base.html'%}
+
+{%block content%}
+
+
+<form action="" method="POST">
+    {% csrf_token %}
+      <div class="container" style="width: 50%;">
+      <!--artk kullanıcı giriş yapıyo ve nicknemeye ihtiyacmz olmadıgı için burayı kullanmıyoruz 258.videodan sonra
+        <div class="mb-3">
+        
+        <label for="nick name" class="form-label">Nick Name</label>
+        <input type="text" class="form-control" id="nick name" name="nick name">
+        
+      </div>
+      -->
+      <div class="mb-3">
+        <label for="message" class="form-label">Message</label>
+        <input type="text" class="form-control" id="message" name="message">
+      </div>
+      
+      <button type="submit" class="btn btn-primary">Send Tweet</button>
+  </div>
+  </form>
+{% endblock %}
+
